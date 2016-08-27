@@ -1,0 +1,87 @@
+.caption {
+    color: #BBB;
+    font-size: 0.6em;
+    font-style: italic;
+}
+
+.col-left {
+  float: left;
+  width: 60%;
+  vertical-align: middle;
+}
+
+.col-left-small {
+  float: left;
+  max-width: 40%;
+  vertical-align: middle;
+}
+
+.col-right {
+  float: right;
+  max-width: 40%;
+}
+
+.col-right-large {
+  float: right;
+  padding-left: 50px;
+  width: 60%;
+}
+.col-right > img {
+  display: inline;
+  max-height: 300px;
+  width: auto;
+}
+
+hr.line {
+  margin-top: 50px !important;
+}
+
+.image {
+  max-height: 300px;
+}
+
+.subtitle-muted {
+  color: #BBBBBB;
+  font-size: 0.6em;
+  margin-top: -1rem !important;
+}
+
+.row {
+  clear: both;
+}
+
+.table-of-contents {
+  border: solid 2px #DDD;
+  border-radius: 2px;
+  min-height: 200px;
+  min-width: 300px;
+  padding: 10px 15px;
+}
+
+.table-of-contents > a {
+  display: block;
+  line-height: 1.4;
+}
+
+.table-of-contents > p {
+  line-height: 0.8;
+}
+.table-of-contents > .topic {
+  font-size: 0.85em;
+  margin-top: 0.8em;
+  border-bottom: solid 2px #EEE;
+}
+
+.table-of-contents > .sub-topic {
+  font-size: 0.7em;
+  margin-left: 2em;
+}
+
+.table-of-contents > .sub-sub-topic {
+  font-size: 0.55em;
+  margin-left: 4em;
+}
+
+sup {
+  font-style: italic;
+}
