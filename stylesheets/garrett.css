@@ -1,3 +1,19 @@
+#abrupt_end {
+  background-color: rgba(0,0,0,0);
+  font-size: 4em;
+}
+
+#abrupt_end:before {
+  content:"❬/";
+}
+#abrupt_end:after {
+  content:"❭";
+}
+
+.abyss {
+  box-shadow: 100px -80px black;
+}
+
 .anagram {
   font-size: 1.5em;
   font-weight: 400;
@@ -57,6 +73,14 @@ blockquote {
   display: inline;
   max-height: 300px;
   width: auto;
+}
+
+.dbwnc {
+  color: rgb(150,0,255);
+  padding: 1px;
+  background: #212;
+  border-radius: 2px;
+  box-shadow: 0 0 2px 2px #212;
 }
 
 .gap {

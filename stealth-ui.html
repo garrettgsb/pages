@@ -239,6 +239,18 @@
       </div>
       <div class="row">
         <p>
+          Human brains have very strict cognitive constraints
+          <sup>
+            <a href="https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two">[1]</a>
+            <a href="https://en.wikipedia.org/wiki/Dunbar%27s_number">[2]</a>
+            <a href="https://en.wikipedia.org/wiki/List_of_cognitive_biases">[3]</a>
+          </sup>
+          and it's quite easy for even the most intelligent of us to be overwhelmed
+          or sufficiently distracted that we don't notice patterns in plain sight.
+          For that reason, there are certain ways that data really should (and
+          shouldn't) be optimized for mortal minds.
+        </p>
+        <p>
           We are best equipped to intuitively understand
           <a href="https://books.google.ca/books?id=loVMMlxC1XoC&pg=PA19&lpg=PA19&dq=%22medium+sized+objects+moving+at+medium+speeds%22&source=bl&ots=eCHb3eqGAW&sig=Us3LS01qG_Pjm4J7rjbE5W6rXN4&hl=en&sa=X&ved=0ahUKEwj3xq7Mg-XOAhUCymMKHZ95DW8Q6AEIJjAB#v=onepage&q=%22medium%20sized%20objects%20moving%20at%20medium%20speeds%22&f=false">
             "medium-sized objects moving at medium speeds
@@ -623,7 +635,7 @@
           <a href="http://bl.ocks.org/kerryrodden/7090426">
             <img src="coding-sunburst.gif">
             <br />
-            <p class="caption">Click to interact with this rad interactive sunburst chart</p>
+            <p class="caption">Click to interact with this brilliant interactive sunburst chart</p>
           </a>
         </div>
       </div>
@@ -643,7 +655,29 @@
           Just kidding. It probably just means "Three" like "Three dimensional."
         </p>
         <p>
-          It's rad though.
+          It's great though. It provides a straightforward Javascript interface
+          for developing with WebGL (which is the technology that made
+          <a href="http://madebyevan.com/webgl-water/">the water simulation</a>
+          possible), and it's easy enough to use pre-built models and animations
+          that alot of Lighthouse Labs final projects use it to create pretty handsome
+          TRON-looking apps with cool black backgrounds and neon colors.
+        </p>
+        <div class="row" align="center">
+          <img class="image" src="threejs.gif">
+          <p class="caption">Pewpewpew!!</p>
+        </div>
+        <p>
+          So Three.js would be really fun to use. Before going too far down that
+          road though, I'd want to caution that there's a reason that most of
+          the Three.js apps that you see are demos, and not production apps using
+          it at scale: <strong>Performance.</strong>
+        </p>
+        <p>
+          Just for example, running that WebGL water demo in the background
+          causes my Firefox instance to shoot up to 117% CPU. Yikes! So
+          while it might be handy and impressive to use 3D rendering for
+          <em>some</em> components in the app, it maybe shouldn't be the sand
+          that you build your castle on.
         </p>
 
       <h4 id="babylonjs">Babylon.js</h4>
@@ -656,6 +690,20 @@
           <img src="glucagon.gif">
         </a>
         <p class="caption">Click to play with this glucagon molecule, if that's the kind of thing you're into.</p>
+      </div>
+      <div class="row">
+        <p>
+          That's all I have to say about that at the moment. Babylon.js is good
+          at making 3D WebGL things look pretty, if they aren't already pretty enough.
+        </p>
+        <p>
+          You can look at the myriad of good-looking demos on the
+          <a href="babylonjs.com">Babylon.js website</a> if you like,
+          or just look at how somebody applied the <span class="dbwnc">"dark background with neon
+          colors"</span> motif to <a href="http://czechstartups.org/#3Dmap">
+          this sharp-looking map of startups in the Czech Republic</a>. This
+          one comes with pillowy ambient trance music.
+        </p>
       </div>
       <h3 id="game-frameworks">Game Frameworks for Interaction</h3>
       <p>
@@ -688,18 +736,64 @@
         like a solid candidate.
       </p>
       <p>
-        It's got <a href="http://phaser.io/examples/v2/misc/webcam">webcam support</a> too, for some reason.
+        It's even got <a href="http://phaser.io/examples/v2/misc/webcam">webcam support</a>, for some reason.
       </p>
       <h3 id="coding-deploying">Deploying</h4>
-      <h4 id="coding-browser">In the browser [in progress]</h4>
+      <h4 id="coding-browser">In the browser</h4>
       <p>
-        This is the obvious choice.
+        This is probably what you were thinking. Web apps (i.e. apps that live
+        in the browser) are not a bad idea-- Some companies
+        <sup>
+          <a href="facebook.com">[1]</a>
+          <a href="twitter.com">[2]</a>
+          <a href="google.com">[3]</a>
+        </sup>
+         have even made a little bit of money off of these.
       </p>
-      <h4 id="coding-electron">Electron native app [in progress]</h4>
-      <p>
-        This is a less obvious choice that you may not have thought of.
-      </p>
+      <h4 id="coding-electron">Electron native app</h4>
+      <div class="row">
+        <div class="col-left">
+          <p>
+            This is a less obvious choice that you may not have thought of.
+          </p>
+          <p>
+            <a href="http://electron.atom.io/">Electron</a> was originally designed
+            as a toolkit to build the <a href="atom.io">Atom text editor</a>, which
+            I personally use to write most of my code, including the code on this page.
+            Now, it's open source, so anyone can use Electron to develop solid desktop
+            apps using mostly the same technologies that one would use to
+            develop a browser-based web app.
+          </p>
+        </div>
+        <div class="col-right">
+          <img class="image" src="gitkraken.png">
+          <p class="caption">A nice looking GUI for Git/GitHub that I use to help keep track of my own projects. Electron.</p>
+        </div>
+      </div>
+      <div class="row">
+        <p>
+          If things like lots of local file storage, interaction with inputs/outputs
+          other than keyboard and mouse, interaction with other (esp. legacy)
+          software, and overall app performance turn out to be important, a native
+          Electron app could be an elegant solution that your friends would be
+          jealous of.
+        </p>
+      </div>
+      <div class="row" align="center">
+        <a href="http://electron.atom.io/apps/">
+          <img width="64px;" src="http://electron.atom.io/images/apps/atom.png">
+          <img width="64px;" src="http://electron.atom.io/images/apps/slack.png">
+          <img width="64px;" src="http://electron.atom.io/images/apps/gitkraken.png">
+          <img width="64px;" src="http://electron.atom.io/images/apps/wordpress.png">
+          <p class="caption">A few of the apps that are made with Electron. Click for full list.</p>
+        </a>
+      </div>
     </section>
+    <div class="row" align="center">
+      <div class="">
+        <span id="abrupt_end">abrupt_article_end</span>
+      </div>
+    </div>
   </main>
 
     <script src="javascripts/jquery-3.0.0.js"></script>
