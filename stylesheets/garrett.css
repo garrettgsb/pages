@@ -1,5 +1,4 @@
 #abrupt_end {
-  background-color: rgba(0,0,0,0);
   font-size: 4em;
 }
 
@@ -14,7 +13,7 @@
   box-shadow: 100px -80px black;
 }
 
-.anagram {
+.acronym {
   font-size: 1.5em;
   font-weight: 400;
 }

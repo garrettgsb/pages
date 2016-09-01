@@ -40,6 +40,8 @@
               <a class="sub-topic" href="#interacting-strategy">Inspiration From Strategy Games</a>
               <a class="sub-topic" href="#simcity">SimCity 4</a>
               <a class="sub-topic" href="#homeworld">Homeworld</a>
+              <!--TODO--><a class="sub-topic" href="#elder-scrolls">The Elder Scrolls</a>
+
               <a class="topic" href="#coding">Coding</a>
               <a class="sub-topic" href="#coding-overview">Overview</a>
               <a class="sub-topic" href="#coding-visualization">Rad Javascript Libraries</a>
@@ -51,6 +53,15 @@
               <a class="sub-topic" href="#coding-deploying">Deploying</a>
               <a class="sub-sub-topic" href="#coding-browser">In the browser</a>
               <a class="sub-sub-topic" href="#coding-electron">Electron native app</a>
+
+              <a class="topic" href="#integrating">Integrating</a>
+              <a class="sub-topic" href="#python-page">Getting Python data onto a webpage</a>
+              <a class="sub-sub-topic" href="#pandas">Through PANDAS</a>
+              <a class="sub-sub-topic" href="#django">Through a web framework: Django/Flask</a>
+              <a class="sub-sub-topic" href="#sockets">Through web sockets</a>
+              <a class="sub-sub-topic" href="#json">Directly convert to JSON</a>
+              <a class="sub-sub-topic" href="#jupyter">Jupyter is a thing</a>
+              <a class="sub-sub-topic" href="#influx">InfluxDB for timeseries data</a>
             </div>
           </div>
           <div class="col-right-large">
@@ -581,7 +592,7 @@
       </div>
       <div class="row">
         <ul>
-          <li>Javascript is the preferred language</li>
+          <li>Javascript is the preferred language (perhaps with some Django/Python middleware)</li>
 
           <li>The software should run in any modern browser
             <small>(Chrome, Firefox...)</small></li>
@@ -650,11 +661,11 @@
       <h4 id="threejs">Three.js</h4>
         <p>Three.js stands for:</p>
           <ul>
-            <li><span class="anagram">T</span>abulated</li>
-            <li><span class="anagram">H</span>euristic</li>
-            <li><span class="anagram">R</span>endering and</li>
-            <li><span class="anagram">E</span>mulation</li>
-            <li><span class="anagram">E</span>ngine</li>
+            <li><span class="acronym">T</span>abulated</li>
+            <li><span class="acronym">H</span>euristic</li>
+            <li><span class="acronym">R</span>endering and</li>
+            <li><span class="acronym">E</span>mulation</li>
+            <li><span class="acronym">E</span>ngine</li>
           </ul>
         <p>
           Just kidding. It probably just means "Three" like "Three dimensional."
@@ -682,7 +693,7 @@
           causes my Firefox instance to shoot up to 117% CPU. Yikes! So
           while it might be handy and impressive to use 3D rendering for
           <em>some</em> components in the app, it maybe shouldn't be the sand
-          that you build your castle on.
+          that you build your whole castle on.
         </p>
 
       <h4 id="babylonjs">Babylon.js</h4>
@@ -772,7 +783,7 @@
         </div>
         <div class="col-right">
           <img class="image" src="gitkraken.png">
-          <p class="caption">A nice looking GUI for Git/GitHub that I use to help keep track of my own projects. Electron.</p>
+          <p class="caption">GitKraken is a nice looking GUI for Git/GitHub that I use to help keep track of my own projects. All done in Electron.</p>
         </div>
       </div>
       <div class="row">
@@ -792,6 +803,70 @@
           <img width="64px;" src="http://electron.atom.io/images/apps/wordpress.png">
           <p class="caption">A few of the apps that are made with Electron. Click for full list.</p>
         </a>
+      </div>
+    </section>
+
+
+<!--
+    INTEGRATING
+-->
+    <section id="integrating">
+      <div class="row">
+        <hr class="line">
+        <h2>Integrating</h2>
+        <hr class="line">
+      </div>
+
+      <div class="row">
+        <h3 id="python-page">Getting Python data onto a webpage</h3>
+      </div>
+
+      <div class="row">
+        <h4 id="pandas">Through Pandas</h4>
+        <p>
+          Pandas might be handy for massaging the data before passing it to
+          the web server. Pandas is pretty good at that. It also converts,
+          imports and exports quite handily between many many different data
+          formats. Pandas can let you take a Postgres database table, an Excel
+          sheet and a text document using emojis for delimiters, and bring them
+          all into one consistent format (a Pandas dataframe) to play with.
+        </p>
+        <p>
+          I don't really know yet what our data looks like... Pandas might be
+          overkill if all we need to do is pipe JSON through STDOUT or something.
+        </p>
+      </div>
+      <div class="row">
+        <h4 id="django">Through a web framework: Django/Flask</h4>
+        <p>
+          I don't think there's any reason that we couldn't use Node.js or
+          Ruby on Rails for this, if we find that that provides some immense
+          advantage... But I think Python frameworks are a good place to start.
+          I like Python alot
+        </p>
+      </div>
+      <div class="row">
+        <h4 id="sockets">Through web sockets</h4>
+      </div>
+      <div class="row">
+        <h4 id="json">Directly convert to JSON</h4>
+      </div>
+
+      <div class="row">
+        <h4 id="jupyter">Jupyter is a thing</h4>
+      </div>
+
+      <div class="row">
+        <h4 id="influx">InfluxDB for timeseries data</h4>
+        <p>
+          Apparently this database specializes in timeseries data, like that
+          coming from a sensor. It uses Pandas as a middle-man for pushing data
+          around, which was an idea we were playing with.
+        </p>
+        <p>
+          Don't know if this is a good idea or not, I'm just leaving this here
+          as a note.
+        </p>
       </div>
     </section>
     <div class="row" align="center">
