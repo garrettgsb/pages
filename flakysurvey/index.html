@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Description of ❄Flaky Survey App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="garrett.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">❄Flaky Survey</h1>
+      <h2 class="project-tagline">The survey app that lets you change your mind</h2>
+    </section>  <main class="main-content">
+        <section>
+          <hr class="line">
+          <div class="row">
+            <div class="col-left-small">
+              <div class="table-of-contents">
+                <h4>Table of Contents</h4>
+                <a class="topic" href="#approach">Requirements</a>
+                <a class="sub-topic" href="#stack">Tech Stack</a>
+                <a class="sub-topic" href="#features">App Features</a>
+                <a class="sub-sub-topic" href="#creating">Creating a survey</a>
+                <a class="sub-sub-topic" href="#sharing">Sharing a survey</a>
+                <a class="sub-sub-topic" href="#responding">Responding to a survey</a>
+                <a class="sub-topic" href="#testing">Testing</a>
+                <a class="sub-topic" href="#documentation">Documentation</a>
+              </div>
+            </div>
+            <div class="col-right-large">
+            <h1>Description</h1>
+              <p>
+                ❄Flaky Survey is a survey app that lets users create surveys
+                and share them with other users through a public link. Users who
+                have completed a survey can later go back and change their answers.
+              </p>
+            </div>
+        </div>
+        <div class="row"></div>
+        </section>
+        <section id="requirements">
+          <hr class="line" />
+          <h2 id="stack">Tech Stack</h2>
+          <hr class="line" />
+          <p>
+            The app is expected to be designed and built in <strong>Ruby on Rails</strong>,
+            following the principles covered in
+            <a href="http://www.poodr.com/">
+              "Practical Object Oriented Design in Ruby" by Sandi Metz
+            </a>,
+            but any similar framework such as Django is also acceptable.
+            It can be created as either a single- or multi-page app. The code should be
+            hosted on Github, and it should be relatively easy for another user
+            to clone the repo and launch the app.
+          </p>
+          <hr class="line" />
+          <h2 id="features">App Features</h2>
+          <hr class="line" />
+          <p>
+            Users can create <strong>Surveys</strong> that can be shared with
+            other users. Users who have responded to a survey should be able to
+            edit their answers after submitting.
+          </p>
+          <h3 id="creating">Creating a survey</h3>
+          <p>
+            The Survey creator should be able to add <strong>Questions</strong>
+            with one of the following answer types:
+          </p>
+          <ul>
+            <li>Plain text</li>
+            <li>Multiple choice (select one)</li>
+            <li>Multiple choice (select many)</li>
+          </ul>
+
+          <h3 id="sharing">Sharing a survey</h3>
+          <p>
+            When a survey is created, a public link is generated that lets the
+            survey creator share the survey. Only users who are signed in may
+            respond to the survey.
+          </p>
+
+          <h3 id="responding">Responding to a survey</h3>
+          <p>
+            When a user visits a survey belonging to another user, they can
+            fill in answers to each question and submit their results at the end.
+          </p>
+          <p>
+            If they revisit the public link for a survey that they have already
+            responded to, the survey is populated with their previous answers.
+            They can make any changes that they like, and submit again like normal.
+          </p>
+
+          <h3>Viewing survey results</h3>
+          <p>
+            Each survey has its own <strong>Results Page</strong> where the responses
+            for each question are tallied, or in the case of text responses,
+            listed in a way that is easy to browse.
+          </p>
+
+
+          <hr class="line" />
+          <h2>Testing</h2>
+          <hr class="line" />
+          <p>
+            The app should be unit tested using RSpec or a similar testing
+            framework. It should be fairly easy to see how the app works
+            internally just by looking at the unit tests.
+          </p>
+
+          <hr class="line" />
+          <h2>Documentation</h2>
+          <hr class="line" />
+          <p>
+            Documentation should consist of, at least, a readme file that explains
+            installation, configuration, and basic usage of the app. The usage
+            of any public interface methods should also be documented in the
+            readme file.
+          </p>
+
+        </section>
+      </main>
+    </body>
+  </html>

@@ -1,0 +1,169 @@
+#abrupt_end {
+  font-size: 4em;
+}
+
+#abrupt_end:before {
+  content:"❬/";
+}
+#abrupt_end:after {
+  content:"❭";
+}
+
+.abyss {
+  box-shadow: 100px -80px black;
+}
+
+.acronym {
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
+blockquote {
+  font-style: italic;
+  font-weight: 700;
+}
+
+.caption {
+    color: #BBB;
+    font-size: 0.6em;
+    font-style: italic;
+    text-align: center;
+}
+
+.col-left {
+  float: left;
+  padding: 5px;
+  width: 60%;
+  vertical-align: middle;
+}
+
+.col-left-small {
+  float: left;
+  max-width: 40%;
+  vertical-align: middle;
+}
+.col-left-vsmall {
+  float: left;
+  max-width: 20%;
+  vertical-align: middle;
+}
+
+.col-right {
+  float: right;
+  max-width: 40%;
+}
+
+.col-right > p {
+  padding: 10px;
+}
+
+.col-right-large {
+  float: right;
+  padding-left: 50px;
+  width: 60%;
+}
+
+.col-right-vlarge {
+  float: right;
+  padding-left: 50px;
+  width: 80%;
+}
+.col-right > img {
+  display: inline;
+  max-height: 300px;
+  width: auto;
+}
+
+.dbwnc {
+  color: rgb(150,0,255);
+  padding: 1px;
+  background: #212;
+  border-radius: 2px;
+  box-shadow: 0 0 2px 2px #212;
+}
+
+.gap {
+  margin-top: 50px;
+}
+
+hr.line {
+  margin-top: 50px !important;
+}
+
+.image {
+  clear: both;
+  max-height: 300px;
+}
+
+li > ul > li {
+  font-size: 0.85em;
+  list-style: square;
+}
+
+p > a {
+  font-weight: bold;
+}
+
+ul {
+  font-size: 0.85em;
+}
+
+h2::before, h3::before {
+  content: "❄";
+  color: #BBB;
+  margin-right: 10px;
+
+}
+
+h3.subtitle-muted, h4.subtitle-muted, h5.subtitle-muted {
+  color: #BBBBBB;
+  font-size: 0.6em;
+  margin-top: -1rem !important;
+}
+
+.row {
+  clear: both;
+}
+
+.table-of-contents {
+  border: solid 2px #DDD;
+  border-radius: 2px;
+  min-height: 200px;
+  min-width: 300px;
+  padding: 10px 15px;
+}
+
+.table-of-contents > a {
+  display: block;
+  line-height: 1.4;
+}
+
+.table-of-contents > p {
+  line-height: 0.8;
+}
+.table-of-contents > .topic {
+  font-size: 0.85em;
+  margin-top: 0.8em;
+  border-bottom: solid 2px #EEE;
+}
+
+.table-of-contents > .sub-topic {
+  font-size: 0.7em;
+  margin-left: 2em;
+}
+
+.table-of-contents > .sub-sub-topic {
+  font-size: 0.55em;
+  margin-left: 4em;
+}
+
+.table-of-contents > ul > li {
+  padding: 10px 0px;
+}
+.table-of-contents > ul > li > a {
+  font-weight: 600;
+}
+
+sup {
+  font-style: italic;
+}
