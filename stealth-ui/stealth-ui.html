@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>On Robot Brains</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/garrett.css" media="screen">
+  </head>
+  <body>
+    <p style="background-color: black; bottom: 0px; color: white; padding: 2px 5px; position: fixed;">WORK IN PROGRESS <span style="font-size: 2em;">🤔</span></p>
+    <section class="page-header">
+      <h1 class="project-name">How Do You Interact With A Robot Brain?</h1>
+      <h2 class="project-tagline">I have no idea, but here are some thoughts.</h2>
+    </section>
+
+    <main class="main-content">
+      <section>
+        <hr class="line">
+        <div class="row">
+          <div class="col-left-small">
+            <div class="table-of-contents">
+              <h4>Table of Contents</h4>
+              <a class="topic" href="#approach">My Approach</a>
+              <a class="topic" href="#medicine">Inspiration From Medicine</a>
+              <a class="sub-topic" href="#radiopharm">Radiopharmaceuticals and SPECT Scans</a>
+              <a class="sub-topic" href="#electro">Electricity: Try It On Your Friends</a>
+
+              <a class="topic" href="#visualizing">Visualizing</a>
+              <a class="sub-topic" href="#visualizing-how">How people have been visualizing neural networks</a>
+              <a class="sub-sub-topic" href="#visualizing-graphs">Deep learning seems to likes conventional graphs</a>
+              <a class="sub-sub-topic" href="#visualizing-interactive">Interactive visualizations of neural networks</a>
+              <a class="sub-sub-topic" href="#visualizing-sucks">Those aren't good enough, though</a>
+              <a class="sub-topic">Fun visualizations that aren't related to AI <em>(yet)</em></a>
+
+              <a class="topic" href="#interacting">Interacting</a>
+              <a class="sub-topic" href="#interacting-strategy">Inspiration From Strategy Games</a>
+              <a class="sub-topic" href="#simcity">SimCity 4</a>
+              <a class="sub-topic" href="#homeworld">Homeworld</a>
+              <!--TODO--><a class="sub-topic" href="#elder-scrolls">The Elder Scrolls</a>
+
+              <a class="topic" href="#coding">Coding</a>
+              <a class="sub-topic" href="#coding-overview">Overview</a>
+              <a class="sub-topic" href="#coding-visualization">Rad Javascript Libraries</a>
+              <a class="sub-sub-topic" href="#d3js">D3.js</a>
+              <a class="sub-sub-topic" href="#threejs">Three.js</a>
+              <a class="sub-sub-topic" href="#babylonjs">Babylon.js</a>
+              <a class="sub-topic" href="#game-frameworks">Game Frameworks for Interaction</a>
+              <a class="sub-sub-topic" href="#phaserjs">Phaser.js</a>
+              <a class="sub-topic" href="#coding-deploying">Deploying</a>
+              <a class="sub-sub-topic" href="#coding-browser">In the browser</a>
+              <a class="sub-sub-topic" href="#coding-electron">Electron native app</a>
+
+              <a class="topic" href="#integrating">Integrating</a>
+              <a class="sub-topic" href="#python-page">Getting Python data onto a webpage</a>
+              <a class="sub-sub-topic" href="#pandas">Through PANDAS</a>
+              <a class="sub-sub-topic" href="#django">Through a web framework: Django/Flask</a>
+              <a class="sub-sub-topic" href="#sockets">Through web sockets</a>
+              <a class="sub-sub-topic" href="#json">Directly convert to JSON</a>
+              <a class="sub-sub-topic" href="#jupyter">Jupyter is a thing</a>
+              <a class="sub-sub-topic" href="#influx">InfluxDB for timeseries data</a>
+            </div>
+          </div>
+          <div class="col-right-large">
+          <h1>Disclaimer</h1>
+            <p>
+              This page seems as convenient a place as any to hold my thoughts on <strong>how to
+              develop tools that can be used to further the pursuit of a human-like AGI</strong>
+              <em>(Artificial General Intelligence)</em>. It is far from finished, and will
+              remain a <em>work in progress</em> for some time.
+            </p>
+            <p>
+              The following can be thought of as a brainstorm, or even as a mood board,
+              moreso than as any sort of proposal for action. I make no claim that the
+              ideas herein are actionable, reasonable, or good, and I leave it
+              to the reader to make their own conjecture as to the best approach to
+              interacting with robot brains.
+            </p>
+            <p>
+              Here is mine.
+            </p>
+          </div>
+      </div>
+      <div class="row"></div>
+      </section>
+      <section name="overview">
+        <hr class="line">
+        <h3 id="approach">My Approach</h3>
+        <hr class="line">
+        <p>
+          The task is to develop tools that will be used by a group of people
+          <strong>much smarter than me,</strong> to tinker with something that is
+          <strong>much smarter than them.</strong> My gut reaction is to stick to
+          what I know; to lean on my area of greatest expertise... But
+          unfortunately, I don't have one of those, so a different approach is needed:
+        </p>
+        <p>
+          My first source of inspiration comes from biology. If a digital intelligence
+          is meant to have characteristics similar to those of a human, then perhaps
+          a sensible place to start is to examine how we learn about and tinker with humans.
+        </p>
+        <div class="row" align="center">
+          <img class="image" align="center" src="chainmail.jpg">
+          <p class="caption">We should wrap the AI in a thermometric chainmail suit, is what I'm suggesting.</p>
+        </div>
+        <p>
+          Despite dealing with a system that is not particularly easy to debug,
+          physicians and medical researchers have developed a diverse <s>bag of hacks</s>
+          toolkit of techniques to peer into the inner workings of the human
+          body, and sometimes to make modifications to its normal functioning.
+        </p>
+        <p>
+          However, while the typical tools of technology and industry can be used
+          to melt, bend, grind, or otherwise coerce materials to match the vision
+          of engineers, <strong>the tools of medicine can't force an organism to behave in one way or
+          another,</strong> and trying too hard to do so will often simply upset and destroy
+          the delicate system.
+        </p>
+        <p>
+          Rather, medical tools must apply only the slightest, most tactful nudge.
+          It's no coincidence that other disciplines, from military to manufacturing,
+          borrow terminology from medicine when they describe any sort of extremely
+          delicate operation as <strong>"surgically precise."</strong>
+        </p>
+        <p>
+          Perhaps the tools used to interact with a complex digital intelligence
+          ought to be created with the same attentiveness and humility.
+        </p>
+      </section>
+
+      <section id="medicine">
+        <hr class="line" />
+        <h2>Inspiration From Medicine</h2>
+        <hr class="line" />
+        <p>
+          The human body is doing exactly 10,000 things<sup>[citation needed]</sup>
+          at any given time, and observing these processes can
+          give us clues about the state of the system.
+        </p>
+        <p>
+          A common theme in medical diagnostics, then, is in choosing a specific thing
+          to measure, and then amplifying that signal, thereby bringing it to the
+          forefront of the examiner's attention. Sometimes, we can do that fairly
+          directly, like when we take someone's pulse; Other times, we're
+          interested in a more elusive signal. In that case, we need a clever way
+          to coax it into a form that is convenient to measure, so we might
+          feel compelled to do something like, say, inject a patient with
+          radioactive material so we can measure where the gamma rays shoot out.
+        </p>
+        <p>
+          For real. Let's talk about that.
+        </p>
+        <div class="row">
+          <h3 id="radiopharm">Radiopharmaceuticals and SPECT scans</h3>
+          <h4 class="subtitle-muted">Or: Injecting a patient with radioactive material so we can measure where the gamma rays shoot out</h4>
+          <div class="col-left">
+            <p>
+              A <a href="https://en.wikipedia.org/wiki/Single-photon_emission_computed_tomography">SPECT scan</a>
+              is a versatile tool for monitoring biological activity. Normally, things found in
+              the human body do not emit gamma rays, and for good reason, but
+              if one of those things did, it would be very convenient to observe
+              how that particular thing behaves in the body.
+            </p>
+            <p>
+              That's great news, because we can actually attach radioactive particles to
+              nearly anything that we might be interested in following (like a sugar
+              molecule, a particular hormone, or even a living cell), and then set it
+              free in the body.
+            </p>
+            <p>
+              This is called "radiolabeling," and it's a great
+              way to debug things like internal bleeding (because you can inject it),
+              or lung dysfunction (because you can snort it).
+            </p>
+          </div>
+            <div class="col-right">
+              <img src="spect.jpg">
+              <p class="caption">A SPECT scan measuring blood flow</p>
+            </div>
+          </div>
+          <div class="row">
+            <p>
+              The radiolabeled thing goes on to do what it was going to do anyway, but now
+              it's loudly spraying gamma rays all over the place, so we can see
+              it clearly with a SPECT scanner. Then, we can compare what we see with
+              our expectation of what should happen according to our hypothesis,
+              and determine whether:
+              <ol>
+                <li>Everything is okay</li>
+                <li>Something is wrong</li>
+                <li>We've learned something new</li>
+              </ol>
+              This pattern of <strong>passing a "loud" carrier signal through the system
+              and then observing its behavior</strong>, is instructive as a tactic
+              for interacting with any complex, autonomous system. I see the tools
+              used to interact with a sophisticated AGI as <strong>a thin layer of visibility
+              on top of a tremendously deep (but mostly opaque) system</strong>, much like
+              the tools of medical diagnosis.
+
+            </p>
+          </div>
+          <h3 id="electro">Electricity: Try It With Your Friends <small>[Incomplete]</small></h3>
+          <div class="row">
+            <div class="col-left">
+              <p>
+                I have some thoughts about
+                <a href="http://www.hopkinsmedicine.org/healthlibrary/test_procedures/neurological/electromyography_emg_92,p07656/">
+                  electromyography
+                </a>
+                and electricity in general, but I'm not particularly inspired to write
+                about it at the moment. When I think of something specific to say about
+                poking brains with electrodes, it will find a home here.
+              </p>
+              <p>
+                Meanwhile,
+                <a href="http://kernelmag.dailydot.com/issue-sections/headline-story/16371/diy-electrical-brain-stimulation-tdcs-promise-and-peril/">
+                  DIY electrical brain stimulation
+                </a>
+                is a thing... But it seems like a bad idea.
+              </p>
+            </div>
+            <div class="col-right">
+              <img class="image" src="brain-toaster.gif">
+            </div>
+          </div>
+          <div class="row"></div>
+    </section>
+
+    <!--
+    VISUALIZING
+    -->
+    <section id="visualizing">
+      <hr class="line">
+      <h2>Visualizing</h2>
+      <hr class="line" />
+      <div class="row">
+        <p>
+          One of the most profound lessons in human perception that I know of
+          came from the alt text of
+          <a href="https://xkcd.com/915/">an XKCD comic</a> that has nothing
+          to do with data visualization:
+        </p>
+      </div>
+      <div class="row">
+          <pre>
+            "Our brains have just one scale, and we resize our experiences to fit."</pre>
+      </div>
+      <div class="row">
+        <p>
+          Human brains have very strict cognitive constraints
+          <sup>
+            <a href="https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two">[1]</a>
+            <a href="https://en.wikipedia.org/wiki/Dunbar%27s_number">[2]</a>
+            <a href="https://en.wikipedia.org/wiki/List_of_cognitive_biases">[3]</a>
+          </sup>
+          and it's quite easy for even the most intelligent of us to be overwhelmed
+          or sufficiently distracted that we don't notice patterns in plain sight.
+          For that reason, there are certain ways that data really should (and
+          shouldn't) be optimized for mortal minds.
+        </p>
+        <p>
+          We are best equipped to intuitively understand
+          <a href="https://books.google.ca/books?id=loVMMlxC1XoC&pg=PA19&lpg=PA19&dq=%22medium+sized+objects+moving+at+medium+speeds%22&source=bl&ots=eCHb3eqGAW&sig=Us3LS01qG_Pjm4J7rjbE5W6rXN4&hl=en&sa=X&ved=0ahUKEwj3xq7Mg-XOAhUCymMKHZ95DW8Q6AEIJjAB#v=onepage&q=%22medium%20sized%20objects%20moving%20at%20medium%20speeds%22&f=false">
+            "medium-sized objects moving at medium speeds
+            through medium distances,"
+          </a>
+          so data presentation is largely about finding ways to represent
+          things in medium magnitudes. I like to think of this as "zoom level."
+        </p>
+        <p>
+          To create a meaningful visualization of something, I think it's helpful
+          to look at how others have represented things with similar
+          characteristics, and then use that to inspire an approach that suits
+          our needs. The first place I thought to look was at neural nets.
+        </p>
+      </div>
+
+      <h3 id="visualizing-how">How people have been visualizing neural networks</h3>
+      <p>
+        Neural networks seem like a good place to start thinking about how to
+        represent what's going on inside of a human-like robot brain. I still don't know
+        a whole lot about either of those things, but there is a wealth of literature
+        on the tools and techniques used to make them do neat tricks.
+      </p>
+      <p>
+        The question is, <strong>can those techniques be elaborated into more
+          powerful, sophisticated tools?</strong>
+      </p>
+      <p>
+        Probably! Of course, I don't know yet what specific problems we want to
+        solve, but here are some observations and conjectures.
+      </p>
+
+      <h4 id="visualizing-graphs">Deep learning seems to likes conventional graphs</h4>
+      <img class="image" src="DL4J_UI.png">
+      <p>
+        It seems as though right now, people working with neural networks
+        are still very reliant on 2D conventional graphs. I like graphs
+        <em>alot</em>, but we know that they are not a panacea for all of
+        our data woes.
+      </p>
+
+      <h4 id="visualizing-interactive">Interactive visualizations of neural networks</h4>
+      <div class="row">
+        <div class="col-left">
+          <a href="http://playground.tensorflow.org/">
+            <img class="image" src="tensorflow.png">
+          </a>
+        </div>
+        <div class="col-right">
+          <p>
+            Simulations like the
+            <a href="http://playground.tensorflow.org/">
+              TensorFlow Playground
+            </a>
+            are great for playing with the concept of neural nets, and the way that
+            they lay out controls and data may be hints as to how a more
+            sophisticated toolset could look.
+          </p>
+          <p>
+            I think it's particularly intuitive how this UI puts its controls
+            in "reading order," and the way they use color is effective: Only
+            things that represent data get any coloration; configuration and
+            controls are otherwise all in grayscale.
+          </p>
+
+        </div>
+      </div>
+      <div class="row"></div>
+      <div class="row gap">
+        <p>
+          Ryerson University's visuslization of a convoluted neural network
+          is particularly interesting, because it addresses one of my initial
+          thoughts about representing data in 3D:
+        </p>
+        <div class="row" align="center">
+        <pre><em>Is 3D EVER a good idea for a visualization?</em></pre>
+      </div>
+        <div align="center" class="row">
+          <img class="image" src="ryerson-3d-vis.png">
+        </div>
+        <p>
+          While I still think that <em>most</em> of the time, making a
+          visualization 3D adds distracting, counter-productive complexity, I'm
+          convinced now that a full 3D representation could actually be
+          meaningful in this sort of application. Good work, Ryerson.
+        </p>
+      </div>
+
+      <h4 id="visualizing-sucks">Those aren't good enough, though</h4>
+      <p>
+        These tools don't seem nearly robust enough for complex systems
+        with overwhelming amounts of data. I don't know for sure, but my intuition is that the
+        current tools used for working with neural nets fall short when they're
+        being applied to a <em>general</em> intelligence.
+      </p>
+      <p>
+        The interactive visualizations are neat, but shallow. They are useful for
+        demos, but they don't give any particularly powerful capabilities. I
+        feel as though these particular layouts would quickly become cluttered
+        and unusable if they were implemented on a large scale.
+      </p>
+      <p>
+        They give us some clues, however, as to some of the characteristics that
+        good tools used to interact with a human-like AGI might have:
+        <ul>
+          <li>Zooming in and out: View the whole system, or focus on one tiny part</li>
+          <li>Filtering out information in which we are not interested</li>
+          <li>Making both tiny, targeted adjustments, and system-wide configuration changes</li>
+          <li>Playing back past system states</li>
+          <li>Some fifth thing (I'm certain that I had one...)</li>
+        </ul>
+      </p>
+      <p>
+        These insights have given me a few ideas as to how these desirable
+        functions can be interpereted as features. Here are some rough notes
+        on the shapes they could take.
+      </p>
+      <h3>Fun visualizations that aren't related to AI <em>(yet)</em></h3>
+      <h4>Force-directed graphs</h4>
+      <div class="row">
+        <p>
+          Below is a force-directed graph that represents all of the connections
+          between the characters in "Les Misérables." Every time the characters
+          share a scene in the script, they are said to have "encountered" one
+          another, and a link is formed. If they encounter each other again,
+          that link's "value" is increased by one, and the link is made stronger.
+        </p>
+        <p>
+          I like force-directed graphs because every property can carry meaning.
+          The software knows what to do without too much "massaging" of the data
+          by the user:
+          <ul>
+            <li>The <strong>color of the nodes</strong> can represent qualitative data, like groupings or categories</li>
+            <li>The <strong>size of the nodes</strong> could represent any arbitrary quantitative
+              property of the node itself
+              <ul>
+                <li>
+                  The graph below doesn't do this, but in the context of "Les
+                  Misérables," perhaps the size of the node could represent the
+                  <strong>number of lines</strong> that a character speaks, which might indicate
+                  <strong>how important that character is.</strong>
+                </li>
+              </ul>
+            </li>
+            <li>The <strong>length</strong> (and 'springiness!') <strong>of the edges</strong> (lines) represent how strongly two nodes are connected
+              <ul>
+                <li>Strongly-connected nodes are pulled closer together than weakly-connected nodes.</li>
+                <li>Which incidentally helps strongly-connected things group together visually</li>
+              </ul>
+            </li>
+          </ul>
+        </p>
+        <p>So force-directed graphs provide a convenient way to turn human-unreadable data like this:</p>
+      </div>
+      <div class="row" align="center">
+        <img class="image" src="miserables-json.png">
+        <p class="caption">The cast of "Les Misérables" and all of their encounters with one another, in JSON form</p>
+      </div>
+      <div class="row" style="padding-top: 50px;">
+        <p>
+          Into something much more attractive and meaningful:
+        </p>
+      </div>
+      <div class="row" align="center">
+        <a href="http://bl.ocks.org/mbostock/4062045"><img class="image" src="force-directed-graph.png">
+        <p class="caption">Force directed graph in D3.js; Click to try interactive version.</p></a>
+      </div>
+      <p>
+        The rows and rows of headachy data are out of sight, and the information
+        overload has completely evaporated. Visualized as a force-directed graph,
+        patterns emerge intuitively with minimal cognitive overhead.
+        <strong>
+          The story that the data wants to tell has started to come
+          into focus.
+        </strong>
+      </p>
+      <p>
+        If we stopped here, we'd be able to determine a few high-level things about
+        "Les Misérables" <strong>at a glance.</strong> If you are familiar with
+        the story (I'm not), you might even be able to guess which characters
+        are represented by some of the nodes. Not so much with the JSON data.
+      </p>
+      <p>
+        But more than that, this sort of visualization enables lots of cool
+        possibilities for additional interaction. This particular demo doesn't
+        let you do much-- You can't even click on nodes to see which character
+        they represent, even though that data is present-- but I bet in  30
+        seconds, you can think of at least 5 features that you could add to play
+        with the data here.
+      </p>
+      <h4>There are TONS of examples.</h4>
+      <p>
+        What if we had the tools to not
+        just show the current state of the system, but to
+        <a href="http://www.jeromecukier.net/projects/agot/places.html">replay
+          how it has changed over time</a>?
+      </p>
+      <p>It's likely that you'd also want to be able to
+        <a href="http://slodge.com/teach/">filter and group nodes by a variety of criteria</a>.
+        </p>
+      <p>
+        And wouldn't it be handy to <a href="http://bl.ocks.org/mbostock/929623">
+        arbitrarily add nodes with one click</a> or <a href="http://bl.ocks.org/mbostock/4565798">
+        click and drag to select them</a>?
+      </p>
+      <p>
+        I don't know exactly <em>why</em> those features would be desirable,
+        but I bet somebody smarter than me does.
+        These tools and others like them can all be developed to reduce the
+        cognitive load on those expensive PhD brains, allowing them to focus
+        on the problems that they want to solve. Force-directed graphs are just
+        one place to start, and I think they look pretty good.
+      </p>
+      <div class="row">
+
+        <div class="col-left table-of-contents">
+          <h3>Other cool ways to interact with data:</h3>
+          <h4 class="subtitle-muted" style="margin-left: 40px;">with Javascript!</h4>
+          <ul>
+            <li>
+              <a href="http://www.visualcinnamon.com/occupations">
+              Circle packing
+              </a>
+              works really well for the zoom-in-zoom-out nature of complex,
+              hierarchical data, and represents groupings very clearly.
+            </li>
+            <li>An
+              <a href="http://bl.ocks.org/kerryrodden/477c1bfb081b783f80ad">
+                interactive sunburst
+              </a>
+              does the same, but also manages to serve as a pie
+              chart, displaying proportions and hierarchies at the same
+              time. Clicking around in it is intuitive and <strong>SUPER</strong>
+              slick-looking.
+            </li>
+            <li>
+              <a href="https://bost.ocks.org/mike/fisheye/">
+                Fisheye/Cartesian distortion
+              </a>
+                lets you get a more focused look at the data that you're interested in with
+                <em>zero</em> clicks. Be sure to scroll down on this page to see
+                the different examples.
+            </li>
+            <li>
+              This <a href="http://mbtaviz.github.io/">Boston subway data
+              visualization</a> (pictured) lets you replay transit events elegantly simply by
+              mousing over the timeline. The timeline itself presents a vast amount
+              of data in a clean way, and allows for clear annotations to be added,
+              giving the data context and explanation. This one isn't perfect
+              (like the top of the timeline has dynamic information, but it
+              quickly goes out of sight for some reason) but it's still one of
+              my favorites.
+            </li>
+          </ul>
+        </div>
+        <div class="col-right">
+          <img src="boston-transit-2.png">
+        </div>
+      </div>
+      <div class="row"></div>
+
+    </section>
+
+    <!--
+    INTERACTING
+    -->
+    <section id="interacting">
+      <hr class="line" />
+      <h2>Interacting <small>[Incomplete]</small></h2>
+      <hr class="line" />
+      <h3 id="interacting-strategy">Inspiration from Strategy Games</h3>
+      <div class="row">
+        <div class="col-left-vsmall">
+          <img src="dont.jpg">
+        </div>
+        <div class="col-right-large">
+          <p>
+            Web design methodologies often follow the philosophy of "Don't make me think."
+            Designers have <em>one</em> particular thing that they want you to
+            do on a page-- Post a photo, sign up for a mailing list, buy something...
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <p>
+          So while there are certainly some complex, highly functional web apps
+          out there (<a href="http://hyperdev.com">including full-on software development IDEs</a>),
+          conventional web design patterns might be underpowered.
+          But there are other places that we can look for suggestions about how
+          to visually represent and interact with complex systems.
+        </p>
+          To me, video games seem like a promising source; particularly management
+          simulation and strategy games. However, to explore and elaborate on
+          that topic, I'd have to download and play a few of my favorites,
+          and that would be a tremendous threat to my productivity this week...
+        </p>
+        <p>
+          So this section is going to just stay empty for now.
+        </p>
+      </div>
+      <h4 id="simcity">SimCity 4</h4>
+      <div class="row" align="center">
+        <img src="simcity.png" class="image">
+        <p class="caption">Maybe I'll just play for a second...</p>
+      </div>
+      <h4 id="homeworld">Homeworld</h4>
+      <p>
+        I don't have a screenshot for Homeworld's innovative 3D navigation
+        interface, so here is a spaceship.
+      </p>
+      <h1>🚀</h1>
+    </section>
+
+    <!--
+    CODING
+    -->
+    <section id="coding">
+      <hr class="line">
+      <h2>Coding</h2>
+      <hr class="line">
+      <h3 id="coding-overview">Overview</h3>
+      <div class="row">
+        <p>
+          I want to lay out a few assumptions that would influence the tools and
+          libraries that I would think of to build the tools described above.
+          Here are a few of them:
+        </p>
+      </div>
+      <div class="row">
+        <ul>
+          <li>Javascript is the preferred language (perhaps with some Django/Python middleware)</li>
+
+          <li>The software should run in any modern browser
+            <small>(Chrome, Firefox...)</small></li>
+
+          <li>The software needs to interface with a Python backend</li>
+
+          <li>It will be used by a relatively small number of people
+            <ul>
+              <li>i.e. It doesn't need to scale like Instagram, work on Windows XP, look good on a Blackberry, etc.</li>
+            </ul>
+          </li>
+
+          <li>
+            It does more than just visualize data; it can also be used
+            to edit and configure.
+          </li>
+        </ul>
+        <p>
+          So with that in mind, here are a few thoughts on specific technologies
+          that would be fun to use in creating this toolkit.
+        </p>
+      </div>
+      <h3 id="coding-visualization">Rad Javascript Libraries</h3>
+      <p>
+        Modern Javascript is incredibly powerful, and developing impressive
+        software is easier than ever with heaps of open-source libraries to
+        choose from. Here are a few that I think are relevant to this purpose.
+      </p>
+      <h4 id="d3js">D3.js</h4>
+      <p>
+        "D3" stands for "Data-Driven Documents." This is a powerful and versatile
+        library that specializes at dynamically rendering data (usually in JSON
+        form) on-screen according to the rules of the client-side script. That
+        means that you can load data into plain text, and the code arranges it
+        dynamically in the browser. It's pretty efficient.
+      </p>
+      <div class="row">
+        <div class="col-left">
+          <p>
+            D3 is cool because it already supports alot of data-to-graphic functions,
+            and there is lots of sample code to help with rapid prototyping. All of
+            the data visualization examples above were produced with D3.
+          </p>
+          <p>
+            D3 doesn't particularly excel at data <em>manipulation</em>, but it's
+            not inconceivable to extend the library's functionality to support
+            that.
+          </p>
+          <p>
+            To see more examples of what D3 can do, check out <a href="d3js.org">d3js.org</a>,
+            and don't miss out on the <a href="https://github.com/d3/d3/wiki/Gallery">examples
+              page</a>.
+            </p>
+        </div>
+        <div class="col-right">
+          <a href="http://bl.ocks.org/kerryrodden/7090426">
+            <img src="coding-sunburst.gif">
+            <br />
+            <p class="caption">Click to interact with this brilliant interactive sunburst chart</p>
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <hr class="line">
+      </div>
+      <h4 id="threejs">Three.js</h4>
+        <p>Three.js stands for:</p>
+          <ul>
+            <li><span class="acronym">T</span>abulated</li>
+            <li><span class="acronym">H</span>euristic</li>
+            <li><span class="acronym">R</span>endering and</li>
+            <li><span class="acronym">E</span>mulation</li>
+            <li><span class="acronym">E</span>ngine</li>
+          </ul>
+        <p>
+          Just kidding. It probably just means "Three" like "Three dimensional."
+        </p>
+        <p>
+          It's great though. It provides a straightforward Javascript interface
+          for developing with WebGL (which is the technology that made
+          <a href="http://madebyevan.com/webgl-water/">the water simulation</a>
+          possible), and it's easy enough to use pre-built models and animations
+          that alot of Lighthouse Labs final projects use it to create pretty handsome
+          TRON-looking apps with cool black backgrounds and neon colors.
+        </p>
+        <div class="row" align="center">
+          <img class="image" src="threejs.gif">
+          <p class="caption">Pewpewpew!!</p>
+        </div>
+        <p>
+          So Three.js would be really fun to use. Before going too far down that
+          road though, I'd want to caution that there's a reason that most of
+          the Three.js apps that you see are demos, and not production apps using
+          it at scale: <strong>Performance.</strong>
+        </p>
+        <p>
+          Just for example, running that WebGL water demo in the background
+          causes my Firefox instance to shoot up to 117% CPU. Yikes! So
+          while it might be handy and impressive to use 3D rendering for
+          <em>some</em> components in the app, it maybe shouldn't be the sand
+          that you build your whole castle on.
+        </p>
+
+      <h4 id="babylonjs">Babylon.js</h4>
+      <p>
+        If 3D is the plan, then something like Babylon.js is how you add things
+        like mirrored/reflective textures, bump mapping, and antialiasing.
+      </p>
+      <div class="row">
+        <a href="http://gleborgne.github.io/molvwr/#1GCN">
+          <img src="glucagon.gif">
+        </a>
+        <p class="caption">Click to play with this glucagon molecule, if that's the kind of thing you're into.</p>
+      </div>
+      <div class="row">
+        <p>
+          That's all I have to say about that at the moment. Babylon.js is good
+          at making 3D WebGL things look pretty, if they aren't already pretty enough.
+        </p>
+        <p>
+          You can look at the myriad of good-looking demos on the
+          <a href="http://babylonjs.com">Babylon.js website</a> if you like,
+          or just look at how somebody applied the <span class="dbwnc">"dark background with neon
+          colors"</span> motif to <a href="http://czechstartups.org/#3Dmap">
+          this sharp-looking map of startups in the Czech Republic</a>. This
+          one comes with pillowy ambient trance music.
+        </p>
+      </div>
+      <h3 id="game-frameworks">Game Frameworks for Interaction</h3>
+      <p>
+        If typical web tools fall short, game frameworks can be an interesting
+        solution to crafting GUIs (*cough* PyGame). Javascript game frameworks
+        mostly use HTML5 Canvas to render things, which runs quite quickly,
+        but requires <em>alot</em> more work to get things going and to optimize.
+        There are <a href="https://html5gameengine.com/">quite a few choices</a>,
+        but this is the one that I know the most about:
+      </p>
+      <h4 id="phaserjs">Phaser.js</h4>
+      <p>
+        If PyGame was fun, then I feel compelled to point out that
+        <a href="http://phaser.io">Phaser.js</a> exists. It does alot of similar things
+        to PyGame, but has the advantage of working in the browser, and also
+        simplifies alot of things that you need to build from scratch
+        in PyGame.
+      </p>
+      <div class="row" align="center">
+        <a href="http://phaser.io/examples/v2/box2d/car-on-terrain">
+          <img src="phaser.gif">
+          <p class="caption">Maybe what we need is a truck.</p>
+        </a>
+      </div>
+      <p>
+        The Phaser.io <a href="http://phaser.io/examples">Examples section</a>
+        has just tons of <a href="http://phaser.io/examples/v2/arcade-physics/ship-trail">stuff to play with</a>
+        if you want to check it out. I can't think of any practical reason to
+        use it now, but if game frameworks are on the table, then Phaser seems
+        like a solid candidate.
+      </p>
+      <p>
+        It's even got <a href="http://phaser.io/examples/v2/misc/webcam">webcam support</a>, for some reason.
+      </p>
+      <h3 id="coding-deploying">Deploying</h3>
+      <h4 id="coding-browser">In the browser</h4>
+      <p>
+        This is probably what you were thinking. Web apps (i.e. apps that live
+        in the browser) are not a bad idea-- Some companies
+        <sup>
+          <a href="http://facebook.com">[1]</a>
+          <a href="http://twitter.com">[2]</a>
+          <a href="http://google.com">[3]</a>
+        </sup>
+         have even made a little bit of money off of these.
+      </p>
+      <img class="image" src="openmct.png">
+      <p>
+        This example is (apparently) a demo of
+        <a href="https://openmct-demo.herokuapp.com">the software that NASA uses
+          with rovers, to control and visualize.
+        </a>
+        It's an inspiring look at how a highly-technical
+        interface can be made in the browser, and can be pleasant to look at.
+      </p>
+      <p>
+        And it's open source :)
+      </p>
+      <h4 id="coding-electron">Electron native app</h4>
+      <div class="row">
+        <div class="col-left">
+          <p>
+            This is a less obvious choice that you may not have thought of.
+          </p>
+          <p>
+            <a href="http://electron.atom.io/">Electron</a> was originally designed
+            as a toolkit to build the <a href="http://atom.io">Atom text editor</a>, which
+            I personally use to write most of my code, including the code on this page.
+            Now, it's open source, so anyone can use Electron to develop solid desktop
+            apps using mostly the same technologies that one would use to
+            develop a browser-based web app.
+          </p>
+        </div>
+        <div class="col-right">
+          <img class="image" src="gitkraken.png">
+          <p class="caption">GitKraken is a nice looking GUI for Git/GitHub that I use to help keep track of my own projects. All done in Electron.</p>
+        </div>
+      </div>
+      <div class="row">
+        <p>
+          If things like lots of local file storage, interaction with inputs/outputs
+          other than keyboard and mouse, interaction with other (esp. legacy)
+          software, and overall app performance turn out to be important, a native
+          Electron app could be an elegant solution that your friends would be
+          jealous of.
+        </p>
+      </div>
+      <div class="row" align="center">
+        <a href="http://electron.atom.io/apps/">
+          <img width="64px;" src="http://electron.atom.io/images/apps/atom.png">
+          <img width="64px;" src="http://electron.atom.io/images/apps/slack.png">
+          <img width="64px;" src="http://electron.atom.io/images/apps/gitkraken.png">
+          <img width="64px;" src="http://electron.atom.io/images/apps/wordpress.png">
+          <p class="caption">A few of the apps that are made with Electron. Click for full list.</p>
+        </a>
+      </div>
+    </section>
+
+
+<!--
+    INTEGRATING
+-->
+    <section id="integrating">
+      <div class="row">
+        <hr class="line">
+        <h2>Integrating</h2>
+        <hr class="line">
+      </div>
+
+      <div class="row">
+        <h3 id="python-page">Getting Python data onto a webpage</h3>
+      </div>
+
+      <div class="row">
+        <h4 id="pandas">Through Pandas</h4>
+        <p>
+          Pandas might be handy for massaging the data before passing it to
+          the web server. Pandas is pretty good at that. It also converts,
+          imports and exports quite handily between many many different data
+          formats. Pandas can let you take a Postgres database table, an Excel
+          sheet and a text document using emojis for delimiters, and bring them
+          all into one consistent format (a Pandas dataframe) to play with.
+        </p>
+        <p>
+          I don't really know yet what our data looks like... Pandas might be
+          overkill if all we need to do is pipe JSON through STDOUT or something.
+        </p>
+      </div>
+      <div class="row">
+        <h4 id="django">Through a web framework: Django/Flask</h4>
+        <p>
+          I don't think there's any reason that we couldn't use Node.js or
+          Ruby on Rails for this, if we find that that provides some immense
+          advantage... But I think Python frameworks are a good place to start.
+          I like Python alot
+        </p>
+      </div>
+      <div class="row">
+        <h4 id="sockets">Through web sockets</h4>
+      </div>
+      <div class="row">
+        <h4 id="json">Directly convert to JSON</h4>
+      </div>
+
+      <div class="row">
+        <h4 id="jupyter">Jupyter is a thing</h4>
+      </div>
+
+      <div class="row">
+        <h4 id="influx">InfluxDB for timeseries data</h4>
+        <p>
+          Apparently this database specializes in timeseries data, like that
+          coming from a sensor. It uses Pandas as a middle-man for pushing data
+          around, which was an idea we were playing with.
+        </p>
+        <p>
+          Don't know if this is a good idea or not, I'm just leaving this here
+          as a note.
+        </p>
+      </div>
+    </section>
+    <div class="row" align="center">
+      <div class="">
+        <span id="abrupt_end">abrupt_article_end</span>
+      </div>
+    </div>
+  </main>
+
+    <script src="../javascripts/jquery-3.0.0.js"></script>
+    <script src="../javascripts/stealth-ui.js"></script>
+  </body>
+</html>
